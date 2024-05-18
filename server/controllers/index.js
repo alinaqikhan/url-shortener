@@ -6,6 +6,7 @@ exports.getUrls = async (req, res, next) => {
   const page = req.query.page || 1;
   const itemsPerPage = 5;
   try {
+    const total = await Url.countDocuments();
     const urls = await Url.find()
       .skip((page - 1) * itemsPerPage)
       .limit(itemsPerPage);
@@ -13,7 +14,7 @@ exports.getUrls = async (req, res, next) => {
     if (urls.length === 0) {
       message = 'No URLs found!';
     }
-    res.status(200).json({ message, urls });
+    res.status(200).json({ message, urls, total });
   } catch (err) {
     next(err);
   }
