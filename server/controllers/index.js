@@ -8,6 +8,7 @@ exports.getUrls = async (req, res, next) => {
   try {
     const total = await Url.countDocuments();
     const urls = await Url.find()
+      .sort({ clicks: 'desc' })
       .skip((page - 1) * itemsPerPage)
       .limit(itemsPerPage);
     let message = 'Success!';
