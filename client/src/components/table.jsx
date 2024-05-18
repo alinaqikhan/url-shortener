@@ -51,7 +51,14 @@ const Table = () => {
             {urlsList.map(url => (
               <tr key={url._id} className='divide-x-2 divide-white divide-y-2'>
                 <td className='p-4 text-center'>{url.fullUrl}</td>
-                <td className='p-4 text-center'>{url.shortUrl}</td>
+                <td className='p-4 text-center'>
+                  <a
+                    className='underline text-blue-700 visited:text-purple-900'
+                    href={`/${url.shortUrl}`}
+                  >
+                    /{url.shortUrl}
+                  </a>
+                </td>
                 <td className='p-4 text-center'>{url.clicks}</td>
               </tr>
             ))}
