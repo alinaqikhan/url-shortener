@@ -4,7 +4,7 @@ const Url = require('../models/url');
 
 exports.getUrls = async (req, res, next) => {
   const page = req.query.page || 1;
-  const itemsPerPage = 12;
+  const itemsPerPage = 5;
   try {
     const urls = await Url.find()
       .skip((page - 1) * itemsPerPage)

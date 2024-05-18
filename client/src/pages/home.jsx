@@ -1,9 +1,10 @@
-import { InputForm } from '../components';
+import { InputForm, Table } from '../components';
 
 const HomePage = () => {
   return (
     <>
       <InputForm />
+      <Table />
     </>
   );
 };
