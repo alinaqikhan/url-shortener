@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const cors = require('cors');
 
+const routes = require('./routes');
+
 const MONGODB_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@mongodb-server.57ej02p.mongodb.net/${process.env.MONGO_DB}`;
 const PORT = process.env.PORT || 8080;
 
@@ -13,9 +15,7 @@ app.use(bodyParser.json());
 app.use(helmet());
 app.use(cors());
 
-app.get('/', (req, res, next) => {
-  res.status(200).json({ message: 'Hello World!' });
-});
+app.use(routes);
 
 app.use((error, req, res, next) => {
   console.log(error); // helps during development
